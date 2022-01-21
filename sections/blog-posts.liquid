@@ -1,0 +1,67 @@
+{{section.settings.liquid-range}}
+
+{%- assign blog = section.settings.new-blog -%}
+
+{% unless blog.articles_count == 0 %}
+
+{% if section.settings.show_css_grid_section == true %}
+<div class="grid grid--uniform grid--blog">
+  {% for article in blog.articles limit: section.settings.posts-range %}
+  <div class="page-width">
+  <div class="grid__item medium-up--one-third">
+    <a href="{{article.url}}">
+      <img src="{{article.image|img_url:'500x' }}" />
+    </a>
+    <br />
+
+    <a href="{{article.url}}">
+      {{article.title}}
+    </a>
+    <br />
+
+  </div>
+  {% endfor %}
+
+</div>
+</div>
+{% endif %}
+
+
+{% endunless %}
+
+
+{% schema %}
+{
+"name":"New Blog Posts",
+"settings":[
+{
+"id":"posts-range",
+"type": "range",
+"min": 1,
+"max": 12,
+"step":1,
+"label": "Range",
+"default":3
+},
+{
+"id":"new-blog",
+"type":"blog",
+"label":"Blog"
+},
+{
+  "type": "checkbox",
+  "id": "show_css_grid_section",
+  "label": "Show CSS Grid",
+  "default": false
+}
+
+],
+"presets":[
+{
+"name":"New Blog Posts",
+"category":"Posts"
+}
+]
+
+}
+{% endschema %}

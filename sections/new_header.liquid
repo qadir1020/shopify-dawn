@@ -1,0 +1,46 @@
+
+
+{%- if section.settings.logo_position == 'top-center' or section.settings.menu == blank -%}
+<h1>{{section.settings.new-header}}</h1>
+    {%- endif -%}
+              
+
+{% schema %}
+{
+    "name":"New Header",
+    "settings":[
+        {
+            "id":"new-header",
+            "type":"textarea",
+            "label":"Header"
+        },
+        {
+            "type": "select",
+            "id": "logo_position",
+            "options": [
+              {
+                "value": "middle-left",
+                "label": "t:sections.header.settings.logo_position.options__1.label"
+              },
+              {
+                "value": "top-left",
+                "label": "t:sections.header.settings.logo_position.options__2.label"
+              },
+              {
+                "value": "top-center",
+                "label": "t:sections.header.settings.logo_position.options__3.label"
+              },
+              {
+                "value": "left",
+                "label": "t:left"
+              }
+            ],
+            "default": "middle-left",
+            "label": "t:sections.header.settings.logo_position.label",
+            "info": "t:sections.header.settings.logo_position.info"
+          }
+    ]
+}
+
+
+{% endschema %}
